@@ -1,0 +1,10 @@
+{% extends "base_main_page.html" %}
+
+{% block right_title %}My last messages:{% endblock %}
+
+{% block form_input %}
+{% endblock %}
+
+{% block request_postprocessor %}
+serialized_form = serialized_form + "&author={{ user_id }}"
+{% endblock %}
