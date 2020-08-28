@@ -93,8 +93,8 @@ DATABASES = {
         'OPTIONS': {
             'read_default_file': os.path.join(BASE_DIR, 'mysql.cnf'),
             'charset': 'utf8',
-        },
-    }
+        }
+    },
 }
 
 DATABASES['default'] = DATABASES['mysql']

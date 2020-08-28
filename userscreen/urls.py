@@ -6,9 +6,9 @@ from userscreen.views import UserCreate, all_users, messages, send_message, main
 
 user_urls = [
     path('ym/', UserCreate.as_view()),
-    path('ym/user/list/', all_users),
+    path('ym/user/list/', all_users, name='all_users'),
     path('ym/user/messages/', user_messages),
-    path('ym/message/list/', messages),
+    path('ym/message/list/', messages, name='messages'),
     path('ym/message/send/', send_message),
     path('ym/admin_view/', main_page),
     path('ym/user/<user_id>', user_page),

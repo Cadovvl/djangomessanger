@@ -40,6 +40,7 @@ def debug_query(func):
 
     return inner_func
 
+
 def cached(func):
     last_val = None
     last_modified = 0.0
@@ -49,6 +50,7 @@ def cached(func):
         nonlocal last_val
         nonlocal last_modified
         if time.time() - last_modified > 0.5:
+            last_modified = time.time()
             last_val = func(request)
             last_modified = time.time()
         return last_val
@@ -60,6 +62,7 @@ def cached(func):
 def all_users(request):
     users = User.objects.all()
     return render(request, 'users.html', { 'users': [u for u in users]})
+
 
 @cached
 def messages(request):
@@ -121,7 +124,6 @@ def my_messages(request, user_id):
                   'messages': [m.text for m in my_messages]
                 })
 @cached
-@debug_query
 def user_messages(request):
     users = User.objects.prefetch_related(
         Prefetch(
