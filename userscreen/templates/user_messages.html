@@ -1,0 +1,11 @@
+
+{% for u in users %}
+<h2>{{ u.name }}</h2>
+<table>
+{% for m in u.messages %}
+<tr><td>{{ m.text }}</td></tr>
+{% endfor %}
+</table>
+{% endfor %}
+
+

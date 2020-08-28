@@ -10,3 +10,4 @@ class Message(models.Model):
     text = models.CharField(max_length=400)
     date = models.DateField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='messages')
+    

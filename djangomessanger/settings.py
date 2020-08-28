@@ -25,7 +25,7 @@ SECRET_KEY = '%kh0a462xz%ivgth=il$!re-m!rwv8a3vo4rt892@7kr+l7f2q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -74,12 +74,30 @@ WSGI_APPLICATION = 'djangomessanger.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+SQLALCHEMY_QUEUEPOOL = {
+    'pool_size': 20,
+    'max_overflow': 10,
+    'timeout': 5,
+    'recycle': 119,
+}
+
+# print(os.path.join(BASE_DIR, 'mysql.cnf'))
+
 DATABASES = {
-    'default': {
+    'local': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'mysql': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': os.path.join(BASE_DIR, 'mysql.cnf'),
+            'charset': 'utf8',
+        },
     }
 }
+
+DATABASES['default'] = DATABASES['mysql']
 
 
 # Password validation
