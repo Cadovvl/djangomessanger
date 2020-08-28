@@ -82,6 +82,7 @@ class TestMessagesCache(unittest.TestCase):
         self.assertEqual(1, models.Message.objects.select_related.call_count)
 
 
+
     # @mock.patch('userscreen.models.Message.objects', mock.Mock())
     # def messages_cached_with_error(self):
     #     models.Message.objects.\
