@@ -58,7 +58,6 @@ def cached(func):
     return inner_func
 
 
-
 def all_users(request):
     users = User.objects.all()
     return render(request, 'users.html', { 'users': [u for u in users]})
