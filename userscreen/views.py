@@ -63,7 +63,7 @@ def all_users(request):
     return render(request, 'users.html', { 'users': [u for u in users]})
 
 
-# @cached
+@cached
 def messages(request):
     messages = Message.objects.select_related('author').order_by('-id')[:30]
     formatted = reversed([f"{ m.author.nickname} :  { m.text }" for m in messages])
